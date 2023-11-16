@@ -1,5 +1,5 @@
 #include <vector>
-#include <unordered_map>
+#include <iostream>
 
 // Required Complexity
 // Time: 0(N)
@@ -13,25 +13,18 @@
 
 // Actual Complexity
 // Time: 0(N)
-// Space: 0(N)
+// Space: 0(1)
 class Problem {
 public:
     int nonRepeatedElement(std::vector<int>& nums) {
 
-        std::unordered_map<int,int> map;
-        int size = nums.size();
+        int bits = 0;
 
-        for (int i = 0; i < size; i++) {
-            map[nums[i]] += 1;
-        };
-
-        for (auto key : map) {
-            if (key.second == 1) {
-                return key.first;
-            }
+        for (int num : nums) {
+            bits ^= num;
         }
         
-        return -1;
+        return bits;
     }
 };
 
