@@ -9,7 +9,7 @@ bool containsDuplicate(std::vector<int>& nums) {
     std::set<int> set;
 
     for (int num : nums) {
-        if (set.count(num)) {
+        if (set.find(num) != set.end()) {
             return true;
         }
         set.insert(num);
